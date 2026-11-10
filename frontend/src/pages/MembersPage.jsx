@@ -562,14 +562,11 @@ function ClassRepsTable({ orgId, orgName, sections, onRepChanged }) {
    MembersPage
    ════════════════════════════════════════════════════════════ */
 export default function MembersPage() {
-  const { selectedOrg, role } = useApp();
+  const { selectedOrg } = useApp();
   const orgId = selectedOrg?.id ?? null;
   const orgName = selectedOrg?.name ?? "—";
   const orgDepartment = selectedOrg?.department ?? null;
   const orgDeptId = orgDepartment?.id ?? null;
-  // Only officers (Class Rep / Class Treasurer) can create sections —
-  // plain Org Members should not see the "Add section" button.
-  const canManageSections = role !== "Org Member";
 
   const [members, setMembers] = useState([]);
   // Sections are scoped to the active org's department — never general.
@@ -581,7 +578,6 @@ export default function MembersPage() {
   const [yearFilter, setYearFilter] = useState("all");
   const [selected, setSelected] = useState(null);
   const [showAddMember, setShowAddMember] = useState(false);
-  const [showAddSection, setShowAddSection] = useState(false);
 
   /* Load ONLY the sections that belong to the active org's department. */
   const loadSections = useCallback(async () => {
@@ -716,13 +712,6 @@ export default function MembersPage() {
               </div>
             </div>
 
-            {orgId && canManageSections && (
-              <Button variant="outline" size="sm" onClick={() => setShowAddSection(true)}>
-                <Plus className="size-4" />
-                <span className="hidden sm:inline">Add section</span>
-                <span className="sm:hidden">Section</span>
-              </Button>
-            )}
           </div>
 
           <div className="overflow-x-auto">
@@ -880,13 +869,6 @@ export default function MembersPage() {
         />
       )}
 
-      {/* Add section dialog — locked to this org's department */}
-      <AddSectionDialog
-        department={orgDepartment}
-        open={showAddSection}
-        onClose={() => setShowAddSection(false)}
-        onAdded={(section) => setSections((s) => [...s, section].sort((a, b) => a.name.localeCompare(b.name)))}
-      />
     </>
   );
 }
