@@ -32,7 +32,7 @@ export function LandingProblem() {
   return (
     <section
       aria-label="The problem"
-      className="border-y border-[var(--hairline)] px-6 py-20"
+      className="border-y border-[var(--hairline)] px-6 py-24"
     >
       <div className="mx-auto max-w-5xl">
         <motion.h2

@@ -299,7 +299,6 @@ export default function AuthPage() {
             transition={{ delay: 0.3, duration: 0.4 }}
             className="mt-5 text-center text-[12px] text-[var(--ink-muted)]"
           >
-            Free for student organizations · No credit card required
           </motion.p>
         </motion.div>
       </div>

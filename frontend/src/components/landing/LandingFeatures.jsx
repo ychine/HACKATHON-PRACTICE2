@@ -48,7 +48,7 @@ const ease = [0.16, 1, 0.3, 1];
 
 export function LandingFeatures() {
   return (
-    <section id="features" aria-label="Features" className="px-6 py-28">
+    <section id="features" aria-label="Features" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
         {/* Heading with scroll-driven opacity */}
         <motion.div

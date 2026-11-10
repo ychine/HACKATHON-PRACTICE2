@@ -30,7 +30,7 @@ export function LandingTrust() {
   return (
     <section
       aria-label="Trust and use cases"
-      className="border-t border-[var(--hairline)] px-6 py-16"
+      className="border-t border-[var(--hairline)] px-6 py-20"
     >
       <div className="mx-auto max-w-5xl">
         {/* Tech pills — stagger in */}
