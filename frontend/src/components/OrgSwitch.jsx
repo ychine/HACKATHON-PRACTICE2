@@ -1,4 +1,4 @@
-import { Check, ChevronDown, Plus } from "lucide-react";
+import { RiCheckLine, RiArrowDownSLine, RiAddLine } from "react-icons/ri";
 import {
   Avatar,
   Button,
@@ -48,7 +48,7 @@ export function OrgSwitch() {
           className="h-auto w-full justify-between px-2 py-1.5"
           aria-label="Switch organization"
         >
-          <span className="flex min-w-0 items-center gap-3">
+          <span className="flex min-w-0 items-center gap-2.5">
             <Avatar
               initials={orgInitials}
               className="size-8 shrink-0"
@@ -59,7 +59,7 @@ export function OrgSwitch() {
               <span className="block text-[11px] text-[var(--ink-muted)]">Student organization</span>
             </span>
           </span>
-          <ChevronDown className="size-4 shrink-0 text-[var(--ink-muted)]" />
+          <RiArrowDownSLine size={15} className="ml-1 shrink-0 text-[var(--ink-muted)]" />
         </Button>
       </DropdownMenuTrigger>
 
@@ -93,7 +93,7 @@ export function OrgSwitch() {
 
         <DropdownMenuSeparator className="my-1 bg-[var(--hairline-soft)]" />
         <DropdownMenuItem onSelect={() => go("/app/orgs")}>
-          <Plus className="size-4" />
+          <RiAddLine size={15} className="text-[var(--ink-muted)]" />
           <span className="text-[13px]">Register another org</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

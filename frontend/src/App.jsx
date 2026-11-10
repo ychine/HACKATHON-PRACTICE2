@@ -8,7 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { MobileDrawer, Sidebar, SIDEBAR_W, SIDEBAR_W_COLLAPSED } from "@/components/layout/Sidebar";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { visibleNav } from "@/lib/nav";
-//import LandingPage from "@/pages/LandingPage";
+import LandingPage from "@/pages/LandingPage";
 import AuthPage from "@/pages/AuthPage";
 import OrgsPage from "@/pages/OrgsPage";
 import DashboardPage from "@/pages/DashboardPage";
@@ -36,11 +36,10 @@ function Root() {
   const { theme } = useApp();
   return (
     <ThemeProvider theme={theme}>
-      {/* Brand IS always dark per DESIGN.md */}
       <div className="min-h-screen bg-[var(--canvas)] text-[var(--ink)]">
         <Routes>
           {/* Public routes — no shell */}
-          {/* <Route path="/"       element={<LandingPage />} /> */}
+          <Route path="/"       element={<LandingPage />} />
           <Route path="/login"  element={<AuthPage />} />
 
           {/* App shell */}

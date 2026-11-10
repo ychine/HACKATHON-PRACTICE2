@@ -2,18 +2,27 @@ import { useNavigate } from "react-router-dom";
 import {
   Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
-import { ArrowDownLeft, ArrowUpRight, Plus, WalletCards } from "lucide-react";
 import { motion } from "motion/react";
+import { RiAddLine, RiArrowDownLine, RiArrowUpLine, RiWalletLine } from "react-icons/ri";
 import {
   Button, Card, CardContent, CardDescription, CardHeader, CardTitle, MotionCard,
 } from "@/components/ui";
 import { Head } from "@/components/Head";
 import { budget, php, txns } from "@/lib/data";
+import { useApp } from "@/context/AppContext";
 
 const stagger = (i) => ({ delay: i * 0.07 });
 
 export default function DashboardPage() {
   const navigate = useNavigate();
+  const { dark } = useApp();
+
+  /* Theme-aware chart colors */
+  const gridColor   = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
+  const tickColor   = dark ? "#999" : "#777";
+  const tooltipBg   = dark ? "#1c1c1a" : "#ffffff";
+  const tooltipBorder = dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
+  const tooltipColor  = dark ? "#fff" : "#0d0d0c";
   return (
     <>
       <Head
@@ -21,7 +30,7 @@ export default function DashboardPage() {
         desc="Here's how Engineering Society's budget is doing."
         action={
           <Button onClick={() => navigate("/app/remittances/new")}>
-            <Plus className="size-4" />
+            <RiAddLine className="size-4" />
             Log a remittance
           </Button>
         }
@@ -48,7 +57,7 @@ export default function DashboardPage() {
               <p className="mt-3 text-[13px] text-white/50">As of June 20, 2025</p>
             </div>
             <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10">
-              <WalletCards className="size-5 text-white/80" />
+              <RiWalletLine className="size-5 text-white/80" />
             </div>
           </div>
         </div>
@@ -93,25 +102,25 @@ export default function DashboardPage() {
                         <stop offset="1" stopColor="#6b3bde" stopOpacity="0" />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid vertical={false} stroke="rgba(255,255,255,0.06)" />
+                    <CartesianGrid vertical={false} stroke={gridColor} />
                     <XAxis
                       dataKey="month"
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: "#999", fontSize: 12 }}
+                      tick={{ fill: tickColor, fontSize: 12 }}
                     />
                     <YAxis
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: "#999", fontSize: 12 }}
+                      tick={{ fill: tickColor, fontSize: 12 }}
                       tickFormatter={(v) => `₱${v / 1000}k`}
                     />
                     <Tooltip
                       contentStyle={{
-                        background: "#1c1c1a",
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        background: tooltipBg,
+                        border: `1px solid ${tooltipBorder}`,
                         borderRadius: 10,
-                        color: "#fff",
+                        color: tooltipColor,
                         fontSize: 13,
                       }}
                       formatter={(v) => php(Number(v))}
@@ -151,8 +160,8 @@ export default function DashboardPage() {
                 >
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-[var(--surface-2)]">
                     {t[4]
-                      ? <ArrowDownLeft className="size-4 text-emerald-400" />
-                      : <ArrowUpRight className="size-4 text-[var(--ink-muted)]" />
+                      ? <RiArrowDownLine className="size-4 text-emerald-400" />
+                      : <RiArrowUpLine className="size-4 text-[var(--ink-muted)]" />
                     }
                   </span>
                   <div className="min-w-0 flex-1">
