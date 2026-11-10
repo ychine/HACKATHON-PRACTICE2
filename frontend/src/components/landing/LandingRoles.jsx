@@ -56,7 +56,7 @@ export function LandingRoles() {
     <section
       id="roles"
       aria-label="Role spotlight"
-      className="border-t border-[var(--hairline)] px-6 py-28"
+      className="border-t border-[var(--hairline)] px-6 py-24"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div

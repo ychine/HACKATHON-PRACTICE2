@@ -39,7 +39,7 @@ export function LandingHowItWorks() {
     <section
       id="how-it-works"
       aria-label="How it works"
-      className="border-t border-[var(--hairline)] px-6 py-28"
+      className="border-t border-[var(--hairline)] px-6 py-24"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div
