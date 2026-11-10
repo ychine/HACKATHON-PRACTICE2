@@ -1,0 +1,10 @@
+{
+  "description": "Student organizations can track budgets, submit and review remittances with proof, and share transparent transaction histories, reports, and member records.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
