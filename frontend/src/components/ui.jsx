@@ -305,13 +305,15 @@ export const AlertDialogAction = ({ children, onClick }) => (
 );
 
 /* ── Avatar ──────────────────────────────────────────────────── */
-export const Avatar = ({ initials, className }) => (
+export const Avatar = ({ initials, className, style, ...rest }) => (
   <AvatarPrimitive.Root
     className={cn(
       "inline-flex size-9 shrink-0 items-center justify-center overflow-hidden",
       "rounded-[10px] bg-white/10 text-[13px] font-[600] text-[var(--ink)]",
       className,
     )}
+    style={style}
+    {...rest}
   >
     <AvatarPrimitive.Fallback>{initials}</AvatarPrimitive.Fallback>
   </AvatarPrimitive.Root>
