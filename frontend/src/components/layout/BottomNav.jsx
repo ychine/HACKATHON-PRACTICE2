@@ -12,7 +12,7 @@ export function BottomNav({ onMore }) {
   const location = useLocation();
   const visible = visibleNav(role);
 
-  /* Pick three pinned items that are accessible for the current role */
+  /* Pick three pinned items that arezz accessible for the current role */
   const items = PINNED
     .filter((p) => visible.some((n) => n.path === p))
     .slice(0, 3)
