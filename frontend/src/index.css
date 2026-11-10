@@ -62,9 +62,9 @@
   }
 }
 
-/* ── Light NOT shipped — the brand IS dark ─────────────────────
-   We set dark-canvas tokens as the universal :root defaults.    */
-:root {
+/* ── Dark mode (default brand) ──────────────────────────────── */
+:root,
+[data-theme="dark"] {
   /* Canvas / surfaces */
   --canvas:        #111110;
   --surface-1:     #1c1c1a;
@@ -86,6 +86,24 @@
   --gradient-coral:   linear-gradient(135deg, #6e2a2a 0%, #3c1010 100%);
 }
 
+/* ── Light mode override ────────────────────────────────────── */
+[data-theme="light"] {
+  --canvas:        #f8f8f5;
+  --surface-1:     #eeeeed;
+  --surface-2:     #e3e3e0;
+  --hairline:      rgba(0,0,0,0.09);
+  --hairline-soft: rgba(0,0,0,0.055);
+  --ink:           #0d0d0c;
+  --ink-muted:     #666660;
+  /* accent-blue stays the same — signal colour is universal */
+
+  /* Spotlight cards stay vibrant; lighten slightly for the light canvas */
+  --gradient-violet:  linear-gradient(135deg, #5b3aa0 0%, #2d1566 100%);
+  --gradient-magenta: linear-gradient(135deg, #9e2d80 0%, #5a1240 100%);
+  --gradient-orange:  linear-gradient(135deg, #a85520 0%, #6b3010 100%);
+  --gradient-coral:   linear-gradient(135deg, #a84040 0%, #6b2020 100%);
+}
+
 /* Inter OpenType character variants — the brand voice */
 @layer base {
   * { border-color: var(--hairline); box-sizing: border-box; }
@@ -96,12 +114,15 @@
     background: var(--canvas);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
+    /* Smooth token transitions when theme switches */
+    transition: background-color 0.25s ease, color 0.2s ease;
   }
 
   body {
     background: var(--canvas);
     color: var(--ink);
     min-width: 320px;
+    transition: background-color 0.25s ease;
   }
 
   /* Text selection */
